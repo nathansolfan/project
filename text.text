@@ -1,0 +1,19 @@
+User Model:
+
+The User model provides methods for registering and logging in users.
+These methods use the database connection provided by the Model class.
+
+User Controller:
+
+The UserController handles HTTP requests for user-related actions (register, login, logout, and dashboard).
+It uses the User model to interact with the database and the Controller class methods to load views.
+
+
+App Initialization:
+
+The App class routes incoming requests to the appropriate controller and method.
+It uses URL parsing to determine which controller and method to call.
+
+Database Configuration:
+
+The config.php file defines constants for the database connection, which are used in the Model class.
