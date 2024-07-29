@@ -1,6 +1,7 @@
 <?php
 
 class App {
+    // default values
     protected $controller = 'UserController';
     protected $method = 'index';
     protected $params = [];
@@ -19,6 +20,7 @@ class App {
             unset($url[0]);
         }
 
+        // INCLUDE CONTROLLER FILE
         $controllerPath = __DIR__ . '/../controllers/' . $this->controller . '.php';
 
         if (file_exists($controllerPath)) {
@@ -28,6 +30,7 @@ class App {
             exit();
         }
 
+        // INSTANTIATE CONTROLLER
         $this->controller = new $this->controller;
 
         if (isset($url[1])) {
@@ -40,6 +43,7 @@ class App {
         $this->params = $url ? array_values($url) : [];
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
+    // CALL CONTROLLER METHOD
 
     public function parseUrl() {
         if (isset($_SERVER['REQUEST_URI'])) {
